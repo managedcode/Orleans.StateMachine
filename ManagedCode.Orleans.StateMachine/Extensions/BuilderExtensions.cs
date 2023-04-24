@@ -1,12 +1,16 @@
-using Microsoft.Extensions.DependencyInjection;
+using Stateless;
+using System.Threading.Tasks;
+using System;
 
 namespace ManagedCode.Orleans.StateMachine.Extensions;
 
 public static class BuilderExtensions
 {
-    public static IServiceCollection AddOrleansStateMachine(this IServiceCollection clientBuilder)
+    public static StateMachine<TState, TEvent>.StateConfiguration OnEntryOrleansAsync<TState, TEvent>(
+    this StateMachine<TState, TEvent>.StateConfiguration machine,
+    Func<Task> entryAction, string entryActionDescription = null)
     {
-        return clientBuilder;
+        return machine.OnEntryAsync(() => Task.Factory.StartNew(entryAction), entryActionDescription);
     }
-    
+
 }
