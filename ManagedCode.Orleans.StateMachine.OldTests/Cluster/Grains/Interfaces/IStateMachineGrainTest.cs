@@ -1,4 +1,4 @@
-namespace ManagedCode.Orleans.StateMachine.Tests.Cluster.Grains.Interfaces;
+﻿namespace ManagedCode.Orleans.StateMachine.Tests.Cluster.Grains.Interfaces;
 
 public interface IStateMachineGrainTest : IGrainWithStringKey
 {
