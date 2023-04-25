@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ManagedCode.Orleans.StateMachine
 {
-    public class StateGrain<TState, TEvent> : Grain, IGrain, IStateGrain<TState, TEvent>
+    public abstract class StateGrain<TState, TEvent> : Grain, IGrain, IStateGrain<TState, TEvent>
     {
         private StateMachine<TState, TEvent> _stateMachine;
         private StateMachine<TState, TEvent>.StateConfiguration _stateConfiguration;
