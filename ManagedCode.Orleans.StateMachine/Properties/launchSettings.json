@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ManagedCode.Orleans.StateMachine": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:61306;http://localhost:61307"
+    }
+  }
+}
