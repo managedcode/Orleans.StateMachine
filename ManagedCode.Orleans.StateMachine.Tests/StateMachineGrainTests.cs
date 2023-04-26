@@ -4,7 +4,6 @@ using Xunit.Abstractions;
 
 namespace ManagedCode.Orleans.StateMachine.Tests;
 
-
 [Collection(nameof(TestClusterApplication))]
 public class StateMachineGrainTests
 {
@@ -20,6 +19,6 @@ public class StateMachineGrainTests
     [Fact]
     public async Task GrainIdTests()
     {
-        await _testApp.Cluster.Client.GetGrain<IStateMachineGrainTest>("test").Do();
+        await _testApp.Cluster.Client.GetGrain<ITestGrain1>("test").Do();
     }
 }

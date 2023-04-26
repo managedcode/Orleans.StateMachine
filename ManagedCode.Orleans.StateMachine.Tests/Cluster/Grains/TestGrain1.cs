@@ -2,7 +2,7 @@ using ManagedCode.Orleans.StateMachine.Tests.Cluster.Grains.Interfaces;
 
 namespace ManagedCode.Orleans.StateMachine.Tests.Cluster.Grains;
 
-public class StateMachineGrainTest : Grain, IStateMachineGrainTest
+public class TestGrain1 : Grain, ITestGrain1
 {
     public async Task<string> Do()
     {
