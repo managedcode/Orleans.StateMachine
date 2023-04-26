@@ -1,4 +1,4 @@
-using ManagedCode.Orleans.StateMachine.Tests.Cluster.Grains.Interfaces;
+﻿using ManagedCode.Orleans.StateMachine.Tests.Cluster.Grains.Interfaces;
 
 namespace ManagedCode.Orleans.StateMachine.Tests.Cluster.Grains;
 

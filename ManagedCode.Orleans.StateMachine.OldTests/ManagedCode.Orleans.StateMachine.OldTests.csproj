@@ -2,10 +2,13 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
+        <LangVersion>11</LangVersion>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <IsPackable>false</IsPackable>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-
-        <IsPackable>false</IsPackable>
+        <GenerateProgramFile>false</GenerateProgramFile>
+        <RootNamespace>ManagedCode.Orleans.StateMachine.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -49,4 +52,6 @@
     <ItemGroup>
         <ProjectReference Include="..\ManagedCode.Orleans.StateMachine\ManagedCode.Orleans.StateMachine.csproj" />
     </ItemGroup>
+
+
 </Project>

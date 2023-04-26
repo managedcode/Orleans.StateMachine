@@ -1,9 +1,9 @@
 using ManagedCode.Orleans.StateMachine.Tests.Cluster;
 using ManagedCode.Orleans.StateMachine.Tests.Cluster.Grains.Interfaces;
+using Xunit;
 using Xunit.Abstractions;
 
 namespace ManagedCode.Orleans.StateMachine.Tests;
-
 
 [Collection(nameof(TestClusterApplication))]
 public class StateMachineGrainTests
