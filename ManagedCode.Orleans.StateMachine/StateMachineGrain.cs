@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ManagedCode.Orleans.StateMachine.Extensions;
 using ManagedCode.Orleans.StateMachine.Interfaces;
+using ManagedCode.Orleans.StateMachine.Models.Surrogates;
 using Orleans;
 using Stateless;
 using Stateless.Reflection;
@@ -82,8 +83,8 @@ public abstract class StateMachineGrain<TState, TTrigger> : Grain, IStateMachine
         return Task.FromResult(StateMachine.CanFire(trigger));
     }
     
-    public Task<StateMachineInfo> GetInfoAsync()
+    public Task<OrleansStateMachineInfo> GetInfoAsync()
     {
-        return Task.FromResult(StateMachine.GetInfo());
+        return Task.FromResult(new OrleansStateMachineInfo(StateMachine.GetInfo()));
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ManagedCode.Orleans.StateMachine.Models.Surrogates;
 using Stateless;
 using Stateless.Graph;
 using Stateless.Reflection;
@@ -106,7 +107,7 @@ public interface IStateMachineGrain<TState, TTrigger>
     /// <summary>
     /// Provides an info object which exposes the states, transitions, and actions of this machine.
     /// </summary>
-     Task<StateMachineInfo> GetInfoAsync();
+     Task<OrleansStateMachineInfo> GetInfoAsync();
 
     
     //
