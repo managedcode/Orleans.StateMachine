@@ -10,10 +10,10 @@
 
     <!--NuGet-->
     <PropertyGroup>
-        <Title>ManagedCode.Orleans.RateLimiting.Core</Title>
+        <Title>ManagedCode.Orleans.StateMachine</Title>
         <PackageId>ManagedCode.Orleans.StateMachine</PackageId>
-        <Description>RateLimiting base on Orleans</Description>
-        <PackageTags>managedcode, orleans, RateLimiting</PackageTags>
+        <Description>StateMachine implementation on Orleans</Description>
+        <PackageTags>managedcode, orleans</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,13 +21,6 @@
         <PackageReference Include="Microsoft.Orleans.Sdk" Version="7.1.1" />
         <PackageReference Include="Microsoft.Orleans.Serialization.Abstractions" Version="7.1.1" />
         <PackageReference Include="Stateless" Version="5.13.0" />
-        <PackageReference Include="System.Threading.RateLimiting" Version="7.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Attributes\" />
-        <Folder Include="Exceptions\" />
-        <Folder Include="Models\" />
     </ItemGroup>
 
 </Project>
