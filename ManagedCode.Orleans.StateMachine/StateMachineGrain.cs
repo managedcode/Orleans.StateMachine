@@ -21,19 +21,6 @@ public abstract class StateMachineGrain<TState, TTrigger> : Grain, IStateMachine
     public override Task OnActivateAsync(CancellationToken cancellationToken)
     {
         StateMachine = BuildStateMachine();
-
-
-        
-
-
-        
-        
-        
-        
-        
-        
-        
-        
         
         return base.OnActivateAsync(cancellationToken);
     }
