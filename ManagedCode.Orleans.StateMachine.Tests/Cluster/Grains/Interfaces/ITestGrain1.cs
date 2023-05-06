@@ -1,10 +1,21 @@
+using ManagedCode.Orleans.StateMachine.Interfaces;
+
 namespace ManagedCode.Orleans.StateMachine.Tests.Cluster.Grains.Interfaces;
 
-// private state machine
-// TODO: grain that implements state machine grain
-public interface ITestGrain1 : IGrainWithStringKey
+
+public interface ITestGrain : IGrainWithStringKey
 {
-    Task<string> Do();
-    Task<string> Go();
-    Task<string> Take();
+    Task<string> Do(char input);
+}
+
+public interface ITestStatelessGrain : IGrainWithStringKey, IStateMachineGrain<string, char>
+{
+    Task<string> DoSomethingElse(char input);
+}
+
+public static class Constants
+{
+    public const string On = "On";
+    public const string Off = "Off";
+    public const char Space = ' ';
 }

@@ -1,4 +1,5 @@
 using Orleans.TestingHost;
+using Xunit;
 
 namespace ManagedCode.Orleans.StateMachine.Tests.Cluster;
 
