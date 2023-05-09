@@ -27,7 +27,7 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: Test
-        run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=ManagedCode.Orleans.RateLimiting.Tests/lcov.info
+        run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=ManagedCode.Orleans.StateMachine.Tests/lcov.info
 
       #- name: coverlet
       #  uses: b3b00/coverlet-action@1.1.9
