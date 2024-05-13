@@ -17,8 +17,8 @@
         <RepositoryUrl>https://github.com/managedcode/Orleans.StateMachine</RepositoryUrl>
         <PackageProjectUrl>https://github.com/managedcode/Orleans.StateMachine</PackageProjectUrl>
         <Product>Managed Code - Orleans StateMachine</Product>
-        <Version>0.0.3</Version>
-        <PackageVersion>0.0.3</PackageVersion>
+        <Version>0.0.8</Version>
+        <PackageVersion>0.0.8</PackageVersion>
 
     </PropertyGroup>
     <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">

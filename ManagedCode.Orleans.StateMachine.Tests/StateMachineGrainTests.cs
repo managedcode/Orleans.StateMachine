@@ -30,7 +30,7 @@ public class StateMachineGrainTests
         state.Should().Be(Constants.Off);
 
         //No valid leaving transitions are permitted from state 'Off' for trigger 'x'. Consider ignoring the trigger.
-        Assert.ThrowsAsync<InvalidOperationException>(
+        await Assert.ThrowsAsync<InvalidOperationException>(
             () => grain.Do('x'));
     }
 
@@ -46,7 +46,7 @@ public class StateMachineGrainTests
         (await grain.GetStateAsync()).Should().Be(Constants.Off);
 
         //No valid leaving transitions are permitted from state 'Off' for trigger 'x'. Consider ignoring the trigger.
-        Assert.ThrowsAsync<InvalidOperationException>(
+        await Assert.ThrowsAsync<InvalidOperationException>(
             () => grain.FireAsync('x'));
 
         var into = await grain.GetInfoAsync();
