@@ -127,8 +127,8 @@ public interface IStateMachineGrain<TState, TTrigger>
     ///     Gets detailed information about the triggers permitted in the current state, considering the provided arguments, asynchronously.
     /// </summary>
     /// <param name="args">Arguments to be passed to the guard functions.</param>
-    /// <returns>A task that represents the asynchronous operation. The task result contains an enumerable collection of <see cref="TriggerDetails{TState, TTrigger}"/>.</returns>
-    Task<IEnumerable<TriggerDetails<TState, TTrigger>>> GetDetailedPermittedTriggersAsync(params object[] args);
+    /// <returns>A task that represents the asynchronous operation. The task result contains an enumerable collection of <see cref="OrleansTriggerDetails{TTrigger}"/>.</returns>
+    Task<IEnumerable<OrleansTriggerDetails<TTrigger>>> GetDetailedPermittedTriggersAsync(params object[] args);
 
     /// <summary>
     ///     Gets the triggers that are permitted to be fired in the current state asynchronously (property-like access).

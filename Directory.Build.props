@@ -17,8 +17,8 @@
         <RepositoryUrl>https://github.com/managedcode/Orleans.StateMachine</RepositoryUrl>
         <PackageProjectUrl>https://github.com/managedcode/Orleans.StateMachine</PackageProjectUrl>
         <Product>Managed Code - Orleans StateMachine</Product>
-        <Version>0.1.1</Version>
-        <PackageVersion>0.1.1</PackageVersion>
+        <Version>10.4.0</Version>
+        <PackageVersion>10.4.0</PackageVersion>
 
     </PropertyGroup>
     <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
@@ -29,7 +29,7 @@
         <None Include="$(SolutionDir)\README.md" Pack="true" Visible="false" PackagePath="\"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25">
+        <PackageReference Include="DotNet.ReproducibleBuilds" Version="2.0.5">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

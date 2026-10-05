@@ -56,6 +56,35 @@ public class StateMachineGrainTests
     }
 
     [Fact]
+    public async Task PermittedTriggersAreReturnedThroughOrleansAsync()
+    {
+        var grain = _testApp.Cluster.Client.GetGrain<ITestStatelessGrain>("permitted-triggers");
+
+        (await grain.GetPermittedTriggersAsync()).Should().Equal(Constants.Space);
+        (await grain.GetPermittedTriggersPropertyAsync()).Should().Equal(Constants.Space);
+        (await grain.GetDetailedPermittedTriggersAsync()).Should().ContainSingle();
+
+        await grain.FireAsync(Constants.Space);
+        (await grain.GetStateAsync()).Should().Be(Constants.On);
+        (await grain.GetPermittedTriggersAsync()).Should().Equal(Constants.Space);
+    }
+
+    [Fact]
+    public async Task ParameterTypesAreReturnedThroughOrleansAsync()
+    {
+        var grain = _testApp.Cluster.Client.GetGrain<ITestOrleansContextGrain>("trigger-parameter-metadata");
+        await grain.FireAsync(TestOrleansContextTriggers.Activate);
+        await grain.FireAsync(TestOrleansContextTriggers.Process, 123);
+        await grain.FireAsync(TestOrleansContextTriggers.Reset);
+
+        var details = await grain.GetDetailedPermittedTriggersAsync();
+        var process = details.Single(detail => detail.Trigger == TestOrleansContextTriggers.Process);
+        process.HasParameters.Should().BeTrue();
+        process.ArgumentTypes.Should().Equal(typeof(int));
+        (await grain.GetStateAsync()).Should().Be(TestOrleansContextStates.Active);
+    }
+
+    [Fact]
     public async Task OrleansContextExtensions_ExecuteInOrder()
     {
         var grain = _testApp.Cluster.Client.GetGrain<ITestOrleansContextGrain>("test-orleans-context");

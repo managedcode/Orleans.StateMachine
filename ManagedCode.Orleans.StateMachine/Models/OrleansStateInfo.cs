@@ -33,12 +33,12 @@ public class OrleansStateInfo
 
     /// <summary>Substates defined for this StateResource.</summary>
     [Id(1)]
-    public List<OrleansStateInfo> Substates { get; private set; }
+    public List<OrleansStateInfo> Substates { get; private set; } = [];
 
     /// <summary>Superstate defined, if any, for this StateResource.</summary>
     [Id(2)]
-    public OrleansStateInfo Superstate { get; private set; }
-    
+    public OrleansStateInfo? Superstate { get; private set; }
+
 
     /// <summary>
     /// Returns a string representation of the underlying state.

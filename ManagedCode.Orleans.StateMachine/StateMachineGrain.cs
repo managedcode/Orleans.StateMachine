@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
@@ -111,15 +112,17 @@ public abstract class StateMachineGrain<TState, TTrigger> : Grain, IStateMachine
     /// </summary>
     public Task<IEnumerable<TTrigger>> GetPermittedTriggersAsync(params object[] args)
     {
-        return Task.FromResult(StateMachine.GetPermittedTriggers(args));
+        return StateMachine.GetPermittedTriggersAsync(args);
     }
 
     /// <summary>
     /// Gets detailed information about permitted triggers for the current state.
     /// </summary>
-    public Task<IEnumerable<TriggerDetails<TState, TTrigger>>> GetDetailedPermittedTriggersAsync(params object[] args)
+    public async Task<IEnumerable<OrleansTriggerDetails<TTrigger>>> GetDetailedPermittedTriggersAsync(params object[] args)
     {
-        return Task.FromResult(StateMachine.GetDetailedPermittedTriggers(args));
+        var details = await StateMachine.GetDetailedPermittedTriggers(args);
+        return details.Select(detail => new OrleansTriggerDetails<TTrigger>(
+            detail.Trigger, detail.HasParameters, detail.Parameters?.ArgumentTypes.ToArray() ?? [])).ToArray();
     }
 
     /// <summary>
@@ -127,7 +130,7 @@ public abstract class StateMachineGrain<TState, TTrigger> : Grain, IStateMachine
     /// </summary>
     public Task<IEnumerable<TTrigger>> GetPermittedTriggersPropertyAsync()
     {
-        return Task.FromResult(StateMachine.PermittedTriggers);
+        return StateMachine.PermittedTriggersAsync;
     }
 
     /// <summary>
@@ -195,7 +198,7 @@ public abstract class StateMachineGrain<TState, TTrigger> : Grain, IStateMachine
         var result = StateMachine.CanFire(tp, arg0, arg1, arg2, out var unmet);
         return Task.FromResult((result, unmet));
     }
-    
+
     /// <summary>
     /// Returns a string representation of the state machine.
     /// </summary>
@@ -208,7 +211,7 @@ public abstract class StateMachineGrain<TState, TTrigger> : Grain, IStateMachine
     /// Builds the state machine instance.
     /// </summary>
     protected abstract StateMachine<TState, TTrigger> BuildStateMachine();
-    
+
     /// <inheritdoc/>
     public override Task OnActivateAsync(CancellationToken cancellationToken)
     {
